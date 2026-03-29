@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { FileText, LogOut, User as UserIcon } from "lucide-react"
 import { User } from "@/types"
 import { logoutAction } from "@/actions/auth.action"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export default function Navbar({ user }: { user: User | null }) {
   const pathname = usePathname()
@@ -30,7 +31,8 @@ export default function Navbar({ user }: { user: User | null }) {
           <Link href="/#templates" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Templates</Link>
           <Link href="/#pricing" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Pricing</Link>
         </nav>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
           {user ? (
             <>
               <div className="hidden sm:flex items-center gap-2 text-sm text-muted-foreground mr-2">
