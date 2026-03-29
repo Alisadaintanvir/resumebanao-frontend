@@ -16,15 +16,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NeoResume - AI Resume Builder",
+  title: "Resume Banao - AI Resume Builder",
   description: "Create premium resumes in minutes with AI.",
 };
 
 import { getUser } from "@/lib/auth";
 import { cn } from "@/lib/utils";
 
-const ibmPlexSans = IBM_Plex_Sans({subsets:['latin'],variable:'--font-sans'});
-
+const ibmPlexSans = IBM_Plex_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
 
 export default async function RootLayout({
   children,
@@ -37,7 +39,14 @@ export default async function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", ibmPlexSans.variable)}
+      className={cn(
+        "h-full",
+        "antialiased",
+        geistSans.variable,
+        geistMono.variable,
+        "font-sans",
+        ibmPlexSans.variable,
+      )}
     >
       <body className="min-h-full flex flex-col pt-16 selection:bg-primary/30">
         <ThemeProvider>
@@ -49,4 +58,3 @@ export default async function RootLayout({
     </html>
   );
 }
-
