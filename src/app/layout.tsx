@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "./_components/Navbar";
 import Footer from "./_components/Footer";
@@ -20,6 +20,10 @@ export const metadata: Metadata = {
 };
 
 import { getUser } from "@/lib/auth";
+import { cn } from "@/lib/utils";
+
+const ibmPlexSans = IBM_Plex_Sans({subsets:['latin'],variable:'--font-sans'});
+
 
 export default async function RootLayout({
   children,
@@ -31,7 +35,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", ibmPlexSans.variable)}
     >
       <body className="min-h-full flex flex-col pt-16 selection:bg-emerald-500/30">
         <Navbar user={user} />
