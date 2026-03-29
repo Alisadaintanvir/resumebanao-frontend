@@ -24,23 +24,23 @@ export default function BuilderPage() {
   }
 
   return (
-    <div className="flex h-screen w-full bg-[#050505] overflow-hidden fixed inset-0 z-[100]">
+    <div className="flex h-screen w-full bg-background overflow-hidden fixed inset-0 z-[100]">
       {/* Top Navbar specifically for builder */}
-      <header className="absolute top-0 inset-x-0 h-14 border-b border-white/10 bg-black/80 backdrop-blur-md z-20 flex items-center justify-between px-4">
+      <header className="absolute top-0 inset-x-0 h-14 border-b border-border bg-background/80 backdrop-blur-md z-20 flex items-center justify-between px-4">
         <div className="flex items-center gap-4">
-          <Link href="/dashboard" className="text-gray-400 hover:text-white transition-colors">
+          <Link href="/dashboard" className="text-muted-foreground hover:text-foreground transition-colors">
             <LucideArrowLeft className="w-5 h-5" />
           </Link>
-          <span className="font-medium text-sm text-gray-200">Untitled Resume</span>
+          <span className="font-medium text-sm text-foreground">Untitled Resume</span>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm" className="hidden md:flex gap-1 h-8">
             <LucideEye className="w-4 h-4" /> Preview View
           </Button>
-          <Button variant="outline" size="sm" className="gap-1 h-8 border-emerald-500/20 text-emerald-400 hover:bg-emerald-500/10">
+          <Button variant="outline" size="sm" className="gap-1 h-8 border-primary/20 text-primary hover:bg-primary/10">
             <LucideSave className="w-4 h-4" /> Save
           </Button>
-          <Button variant="gradient" size="sm" className="gap-1 h-8 ml-2">
+          <Button size="sm" className="gap-1 h-8 ml-2">
             <LucideDownload className="w-4 h-4" /> Export PDF
           </Button>
         </div>
@@ -49,15 +49,15 @@ export default function BuilderPage() {
       {/* Editor Main Content: Sidebar + Preview */}
       <div className="flex w-full pt-14 h-full">
         {/* LEFT SIDEBAR (Controls & Forms) */}
-        <div className="w-full md:w-[400px] flex shrink-0 flex-col border-r border-white/10 bg-[#0a0a0a] z-10 overflow-y-auto">
+        <div className="w-full md:w-[400px] flex shrink-0 flex-col border-r border-border bg-card z-10 overflow-y-auto">
           {/* Tabs */}
-          <div className="flex p-2 border-b border-white/5 overflow-x-auto gap-2">
+          <div className="flex p-2 border-b border-border overflow-x-auto gap-2">
             {["personal", "experience", "education", "skills"].map(tab => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`px-3 py-1.5 rounded-md text-xs font-medium capitalize whitespace-nowrap transition-colors ${
-                  activeTab === tab ? "bg-white/10 text-white" : "text-gray-500 hover:text-gray-300"
+                  activeTab === tab ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {tab}
@@ -69,36 +69,36 @@ export default function BuilderPage() {
           <div className="p-6 space-y-6">
             {activeTab === "personal" && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
-                <h2 className="text-lg font-semibold text-white">Personal Information</h2>
+                <h2 className="text-lg font-semibold text-foreground">Personal Information</h2>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <label className="text-xs text-gray-400 font-medium">First Name</label>
+                    <label className="text-xs text-muted-foreground font-medium">First Name</label>
                     <Input value={formData.firstName} onChange={h("firstName")} />
                   </div>
                   <div className="space-y-1">
-                    <label className="text-xs text-gray-400 font-medium">Last Name</label>
+                    <label className="text-xs text-muted-foreground font-medium">Last Name</label>
                     <Input value={formData.lastName} onChange={h("lastName")} />
                   </div>
                 </div>
                 <div className="space-y-1">
-                  <label className="text-xs text-gray-400 font-medium">Job Title</label>
+                  <label className="text-xs text-muted-foreground font-medium">Job Title</label>
                   <Input value={formData.jobTitle} onChange={h("jobTitle")} />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <label className="text-xs text-gray-400 font-medium">Email</label>
+                    <label className="text-xs text-muted-foreground font-medium">Email</label>
                     <Input type="email" value={formData.email} onChange={h("email")} />
                   </div>
                   <div className="space-y-1">
-                    <label className="text-xs text-gray-400 font-medium">Phone</label>
+                    <label className="text-xs text-muted-foreground font-medium">Phone</label>
                     <Input value={formData.phone} onChange={h("phone")} />
                   </div>
                 </div>
                 <div className="space-y-1">
-                  <label className="text-xs text-gray-400 font-medium">Professional Summary</label>
+                  <label className="text-xs text-muted-foreground font-medium">Professional Summary</label>
                   <textarea
                     rows={4}
-                    className="w-full rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-emerald-500/50 resize-none transition-colors duration-200"
+                    className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring resize-none transition-colors duration-200"
                     value={formData.summary}
                     onChange={h("summary")}
                   />
@@ -115,12 +115,12 @@ export default function BuilderPage() {
         </div>
 
         {/* RIGHT PREVIEW SCREEN */}
-        <div className="hidden md:flex flex-1 items-center justify-center p-8 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-opacity-10 bg-black/40 relative overflow-y-auto">
+        <div className="hidden md:flex flex-1 items-center justify-center p-8 bg-muted/50 relative overflow-y-auto">
           {/* Zoom Controls Mockup */}
-          <div className="absolute bottom-6 right-6 flex items-center gap-2 bg-black/50 backdrop-blur border border-white/10 rounded-full px-4 py-2 z-20 shadow-xl">
-            <button className="text-gray-400 hover:text-white">-</button>
-            <span className="text-xs text-gray-300 w-10 text-center">100%</span>
-            <button className="text-gray-400 hover:text-white">+</button>
+          <div className="absolute bottom-6 right-6 flex items-center gap-2 bg-card/80 backdrop-blur border border-border rounded-full px-4 py-2 z-20 shadow-xl">
+            <button className="text-muted-foreground hover:text-foreground">-</button>
+            <span className="text-xs text-muted-foreground w-10 text-center">100%</span>
+            <button className="text-muted-foreground hover:text-foreground">+</button>
           </div>
 
           {/* The A4 Document Preview */}
@@ -133,7 +133,7 @@ export default function BuilderPage() {
               <h1 className="text-4xl font-serif text-slate-900 tracking-tight uppercase">
                 {formData.firstName} <span className="font-light">{formData.lastName}</span>
               </h1>
-              <p className="text-lg text-emerald-600 font-medium mt-1 uppercase tracking-widest">{formData.jobTitle}</p>
+              <p className="text-lg text-slate-600 font-medium mt-1 uppercase tracking-widest">{formData.jobTitle}</p>
               <div className="flex items-center justify-center gap-4 text-sm text-slate-500 mt-3 font-mono">
                 <span>{formData.email}</span>
                 <span>•</span>
@@ -181,7 +181,7 @@ export default function BuilderPage() {
                          <h3 className="font-semibold text-slate-800 text-base">{formData.jobTitle}</h3>
                          <span className="text-slate-400 text-xs font-mono">2022 - Present</span>
                       </div>
-                      <p className="text-emerald-600 mb-2">Tech Solutions Inc • New York</p>
+                      <p className="text-slate-600 mb-2">Tech Solutions Inc • New York</p>
                       <ul className="list-disc list-inside text-slate-700 space-y-1 pl-1 leading-relaxed text-sm">
                         <li>Developed responsive, scalable frontend applications using React and Next.js.</li>
                         <li>Improved application load time by 40% through code splitting and asset optimization.</li>
@@ -194,7 +194,7 @@ export default function BuilderPage() {
                          <h3 className="font-semibold text-slate-800 text-base">Frontend Developer</h3>
                          <span className="text-slate-400 text-xs font-mono">2020 - 2022</span>
                       </div>
-                      <p className="text-emerald-600 mb-2">Creative Agency • Remote</p>
+                      <p className="text-slate-600 mb-2">Creative Agency • Remote</p>
                       <ul className="list-disc list-inside text-slate-700 space-y-1 pl-1 leading-relaxed text-sm">
                         <li>Built landing pages and e-commerce platforms using modern web tooling.</li>
                         <li>Implemented complex animation sequences with Framer Motion and GSAP.</li>

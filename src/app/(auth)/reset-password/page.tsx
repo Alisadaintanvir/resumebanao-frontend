@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { useSearchParams, useRouter } from "next/navigation"
@@ -16,6 +16,19 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { ResetPasswordSchema, ResetPasswordInput } from "@/schemas/auth.schema"
 
 export default function ResetPasswordPage() {
+  return (
+    <Suspense fallback={
+      <div className="text-center py-12">
+        <Loader2 className="w-10 h-10 text-primary animate-spin mx-auto mb-4" />
+        <p className="text-muted-foreground text-sm">Loading...</p>
+      </div>
+    }>
+      <ResetPasswordContent />
+    </Suspense>
+  )
+}
+
+function ResetPasswordContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
 
