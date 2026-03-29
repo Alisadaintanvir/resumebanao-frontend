@@ -3,6 +3,7 @@ import { z } from "zod";
 export const LoginSchema = z.object({
   email: z.string().email("Please enter a valid email address."),
   password: z.string().min(1, "Password is required."),
+  rememberMe: z.boolean().optional(),
 });
 
 // Infer the Typescript type from the schema easily
@@ -29,3 +30,19 @@ export const RegisterSchema = z.object({
 });
 
 export type RegisterInput = z.infer<typeof RegisterSchema>;
+
+export const ForgotPasswordSchema = z.object({
+  email: z.string().email("Please enter a valid email address."),
+});
+
+export type ForgotPasswordInput = z.infer<typeof ForgotPasswordSchema>;
+
+export const ResetPasswordSchema = z.object({
+  password: z.string().min(8, "Password must be at least 8 characters long."),
+  confirmPassword: z.string().min(8, "Password don't match."),
+}).refine((data) => data.password === data.confirmPassword, {
+  message: "Passwords don't match",
+  path: ["confirmPassword"],
+});
+
+export type ResetPasswordInput = z.infer<typeof ResetPasswordSchema>;

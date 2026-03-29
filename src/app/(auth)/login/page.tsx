@@ -44,8 +44,8 @@ export default function LoginPage() {
       transition={{ duration: 0.4 }}
     >
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold tracking-tight text-white mb-2">Welcome Back</h1>
-        <p className="text-gray-400 text-sm">Log in to track your beautiful resumes</p>
+        <h1 className="text-3xl font-bold tracking-tight text-foreground mb-2">Welcome Back</h1>
+        <p className="text-muted-foreground text-sm">Log in to track your beautiful resumes</p>
       </div>
 
       {serverError && (
@@ -58,7 +58,7 @@ export default function LoginPage() {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="space-y-4">
           <div className="relative">
-            <LucideMail className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
+            <LucideMail className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
             <Input 
               type="email" 
               placeholder="Email Address" 
@@ -70,7 +70,7 @@ export default function LoginPage() {
             )}
           </div>
           <div className="relative">
-            <LucideLock className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
+            <LucideLock className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
             <Input 
               type="password" 
               placeholder="Password" 
@@ -85,10 +85,14 @@ export default function LoginPage() {
 
         <div className="flex items-center justify-between text-sm">
           <label className="flex items-center gap-2 cursor-pointer">
-            <input type="checkbox" className="rounded border-white/20 bg-white/5 text-emerald-500 focus:ring-emerald-500/50" />
-            <span className="text-gray-400">Remember me</span>
+            <input 
+              type="checkbox" 
+              className="rounded border-input bg-muted/50 text-primary focus:ring-ring" 
+              {...register("rememberMe")}
+            />
+            <span className="text-muted-foreground">Remember me</span>
           </label>
-          <Link href="/forgot-password" className="text-emerald-400 hover:text-emerald-300 transition-colors">
+          <Link href="/forgot-password" className="text-primary hover:text-primary/80 transition-colors">
             Forgot password?
           </Link>
         </div>
@@ -98,9 +102,9 @@ export default function LoginPage() {
         </Button>
       </form>
 
-      <div className="mt-8 text-center text-sm text-gray-400 border-t border-white/10 pt-6">
+      <div className="mt-8 text-center text-sm text-muted-foreground border-t border-border pt-6">
         Don&apos;t have an account?{" "}
-        <Link href="/register" className="text-emerald-400 hover:text-emerald-300 font-medium transition-colors">
+        <Link href="/register" className="text-primary hover:text-primary/80 font-medium transition-colors">
           Sign up for free
         </Link>
       </div>

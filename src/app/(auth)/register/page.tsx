@@ -67,8 +67,8 @@ export default function RegisterPage() {
       transition={{ duration: 0.4 }}
     >
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold tracking-tight text-white mb-2">Create Account</h1>
-        <p className="text-gray-400 text-sm">Join NeoResume and start building today</p>
+        <h1 className="text-3xl font-bold tracking-tight text-foreground mb-2">Create Account</h1>
+        <p className="text-muted-foreground text-sm">Join NeoResume and start building today</p>
       </div>
 
       {serverError && (
@@ -81,7 +81,7 @@ export default function RegisterPage() {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="grid grid-cols-2 gap-4">
           <div className="relative">
-             <LucideUser className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
+             <LucideUser className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
              <Input 
                type="text" 
                placeholder="First Name" 
@@ -107,7 +107,7 @@ export default function RegisterPage() {
 
         <div className="space-y-4">
           <div className="relative">
-            <LucideMail className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
+            <LucideMail className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
             <Input 
               type="email" 
               placeholder="Email Address" 
@@ -119,7 +119,7 @@ export default function RegisterPage() {
             )}
           </div>
           <div className="relative">
-            <LucideLock className="absolute left-3 top-3 w-4 h-4 text-gray-400" />
+            <LucideLock className="absolute left-3 top-3 w-4 h-4 text-muted-foreground" />
             <Input 
               type="password" 
               placeholder="Password" 
@@ -137,9 +137,9 @@ export default function RegisterPage() {
         </Button>
       </form>
 
-      <div className="mt-8 text-center text-sm text-gray-400 border-t border-white/10 pt-6">
+      <div className="mt-8 text-center text-sm text-muted-foreground border-t border-border pt-6">
         Already have an account?{" "}
-        <Link href="/login" className="text-emerald-400 hover:text-emerald-300 font-medium transition-colors">
+        <Link href="/login" className="text-primary hover:text-primary/80 font-medium transition-colors">
           Log in
         </Link>
       </div>
