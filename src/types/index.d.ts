@@ -26,3 +26,15 @@ export interface RegisterSuccess {
   first_name: string;
   last_name: string;
 }
+
+export interface ResumeTemplate {
+  id: number;
+  name: string;
+  description: string;
+  preview_image: string | null;
+  preview_image_url: string;
+  component_id: string;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
